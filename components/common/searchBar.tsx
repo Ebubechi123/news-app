@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     height:'auto',
+    paddingHorizontal:18
   },
   search_bar: {
     width: "80%",

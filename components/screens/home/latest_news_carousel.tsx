@@ -37,6 +37,7 @@ const Latest_News_Carousel = () => {
       )}
       sliderWidth={sliderWidth}
       itemWidth={cardWidth}
+      inactiveSlideShift={0} 
       layout="default"
     />
   );

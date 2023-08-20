@@ -1,7 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { colors } from "../../../theme/colors";
-import Latest_News_Card from "./latest_news_card";
 import Latest_News_Carousel from "./latest_news_carousel";
 
 const Latest_News = () => {
@@ -34,7 +33,7 @@ const Latest_News = () => {
       
 
 
-      <View style={{width:"100%",marginTop:40}} > 
+      <View style={{width:"100%",marginTop:20}} > 
         {/* <Latest_News_Card/> */}
         <Latest_News_Carousel/>
       </View>
@@ -58,7 +57,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal:23
+    paddingHorizontal:18
   },
   title_container: {
     width: "50%",

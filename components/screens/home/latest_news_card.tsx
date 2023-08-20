@@ -24,6 +24,8 @@ const Latest_News_Card = (props: CardProps) => {
     <TouchableOpacity
       style={{
         width: props.cardWidth,
+        left:-10,
+        position:"relative"
       }}
     >
       <ImageBackground source={image} style={styles.card}>

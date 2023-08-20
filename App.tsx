@@ -11,7 +11,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
-    Nunito: require("./assets/fonts/Nunito/static/Nunito-Regular.ttf"),
+    Nunito: require("./assets/fonts/Nunito/static/Nunito-Black.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
@@ -37,6 +37,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: screenWidth,
-    paddingTop: platform === "ios" ? 40 : 0,
+    // paddingTop: platform === "ios" ? 40 : 0,
   },
 });
