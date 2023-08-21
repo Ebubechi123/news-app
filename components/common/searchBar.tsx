@@ -9,38 +9,58 @@ import notificationIcon from "../../assets/images/notificationIcon.png";
 import { Feather } from "@expo/vector-icons";
 import { colors } from "../../theme/colors";
 import { LinearGradient } from "expo-linear-gradient";
-const SearchBar = () => {
+import { useNavigation } from "@react-navigation/native";
+
+interface searchBarProps {
+  notification: boolean;
+}
+
+const SearchBar = (props: searchBarProps) => {
+  const navigate = useNavigation().navigate;
   return (
     <>
       <View style={styles.search_bar_container}>
-        <View style={styles.search_bar}>
+        <View
+          style={[
+            styles.search_bar,
+            { width: props.notification ? "85%" : "100%" },
+          ]}
+        >
           <TextInput
             style={styles.search_input}
             placeholder="DodgeCoin to the Moon.."
             placeholderTextColor={colors.grey}
           />
           <View style={styles.icon}>
-            <Feather name="search" color={colors.grey} size={20} />
+            <TouchableOpacity
+              onPress={() => {
+                navigate("Search");
+              }}
+            >
+              <Feather name="search" color={colors.grey} size={20} />
+            </TouchableOpacity>
           </View>
         </View>
 
-        <View style={styles.icon}>
-          <TouchableOpacity>
-            <LinearGradient
-              colors={["#FF3A44", "#FF8086"]}
-              style={styles.notification_container}
-              start={{ x: 0, y: 0.2 }}
-              end={{ x: 1, y: 1 }}
-            >
-              <Image
-                source={notificationIcon}
-                style={styles.notificationIcon}
-                resizeMode="contain"
-              />
-              <View style={styles.indicator} />
-            </LinearGradient>
-          </TouchableOpacity>
-        </View>
+        {props.notification && (
+          <View style={styles.icon}>
+            <TouchableOpacity>
+              <LinearGradient
+                colors={["#FF3A44", "#FF8086"]}
+                style={styles.notification_container}
+                start={{ x: 0, y: 0.2 }}
+                end={{ x: 1, y: 1 }}
+              >
+                <Image
+                  source={notificationIcon}
+                  style={styles.notificationIcon}
+                  resizeMode="contain"
+                />
+                <View style={styles.indicator} />
+              </LinearGradient>
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
     </>
   );
@@ -54,11 +74,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    height:'auto',
-    paddingHorizontal:18
+    height: "auto",
+    paddingHorizontal: 18,
   },
   search_bar: {
-    width: "80%",
+    width: "85%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
@@ -69,12 +89,12 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   search_input: {
-    width: "80%",
+    width: "85%",
     padding: 3,
     color: "black",
   },
   icon: {
-    width: "20%",
+    width: "15%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "flex-end",

@@ -3,19 +3,24 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import SearchBar from "../../components/common/searchBar";
 import Latest_News from "../../components/screens/home/latest_news";
 import Categories from "../../components/screens/home/catergories_tab";
-import News_List  from "../../components/screens/home/news_list";
+import News_List from "../../components/screens/home/news_list";
 import Bottom_Tab from "../../components/screens/home/bottom_tab";
 
 const Home_Screen = () => {
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false} >
-        <SearchBar />
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+      >
+        <SearchBar notification />
         <Latest_News />
         <Categories />
-        <News_List />
+        <News_List
+          styles={{ width: "100%", padding: 10, marginVertical: 10 }}
+        />
       </ScrollView>
-      <Bottom_Tab/>
+      <Bottom_Tab />
     </View>
   );
 };

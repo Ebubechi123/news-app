@@ -28,7 +28,14 @@ const AppStack = () => {
         }}
       />
       <Stack.Screen name="Notification" component={Notification_Screen} />
-      <Stack.Screen name="Search" component={Search_Screen} />
+      <Stack.Screen
+        name="Search"
+        component={Search_Screen}
+        options={{
+          headerShown: false,
+          cardStyle: { backgroundColor: colors.backgroundColor },
+        }}
+      />
       <Stack.Screen name="News_Details" component={News_Details_Screen} />
     </Stack.Navigator>
   );

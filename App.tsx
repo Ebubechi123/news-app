@@ -4,7 +4,7 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
 import AppStack from "./navigation/stackNavigator";
-
+import 'react-native-gesture-handler'
 const platform = Platform.OS;
 const screenWidth = Dimensions.get("window").width;
 SplashScreen.preventAutoHideAsync();
