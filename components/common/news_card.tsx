@@ -8,8 +8,17 @@ import {
 import bgImg from "../../assets/images/latest_news.jpg";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
-const News_Card = () => {
+import {formatDate} from "../../utilities/formatDate"
+interface newsProp {
+  author: string;
+ publishedAt: string;
+  urlToImage: string;
+  title: string;
+}
+const News_Card = (props: newsProp) => {
   const navigate = useNavigation().navigate;
+  const { author, title, urlToImage,publishedAt } = props;
+  console.log("date",publishedAt)
   return (
     <>
       <TouchableOpacity
@@ -18,21 +27,21 @@ const News_Card = () => {
           navigate("News_Details");
         }}
       >
-        <ImageBackground source={bgImg} style={styles.card}>
+        <ImageBackground source={{ uri: urlToImage }} style={styles.card}>
           <LinearGradient
             colors={["#62626259", "#000000"]}
             style={styles.gradient}
           />
           <View style={styles.content}>
             <View style={styles.title_container}>
-              <Text style={styles.title}>
-                5 things to know about the 'conundrum' of lupus
+              <Text lineBreakMode="tail" numberOfLines={2} style={styles.title}>
+                {title}
               </Text>
             </View>
 
             <View style={styles.card_details}>
-              <Text style={styles.author}>Matt Villano</Text>
-              <Text style={styles.date}>Sunday, 9 May 2021</Text>
+              <Text style={styles.author}>{author}</Text>
+              <Text style={styles.date}>{formatDate(publishedAt)}</Text>
             </View>
           </View>
         </ImageBackground>
