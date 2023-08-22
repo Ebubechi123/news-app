@@ -7,10 +7,17 @@ import {
 } from "react-native";
 import bgImg from "../../assets/images/latest_news.jpg";
 import { LinearGradient } from "expo-linear-gradient";
+import { useNavigation } from "@react-navigation/native";
 const News_Card = () => {
+  const navigate = useNavigation().navigate;
   return (
     <>
-      <TouchableOpacity style={{ width: "100%" }}>
+      <TouchableOpacity
+        style={{ width: "100%" }}
+        onPress={() => {
+          navigate("News_Details");
+        }}
+      >
         <ImageBackground source={bgImg} style={styles.card}>
           <LinearGradient
             colors={["#62626259", "#000000"]}

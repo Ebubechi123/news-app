@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Dimensions, Platform, SafeAreaView, StyleSheet } from "react-native";
+import { Dimensions, Platform, SafeAreaView, StyleSheet, View } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
@@ -26,9 +26,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
+      <View style={styles.container} onLayout={onLayoutRootView}>
         <AppStack />
-      </SafeAreaView>
+      </View>
     </NavigationContainer>
   );
 }

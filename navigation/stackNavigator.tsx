@@ -36,7 +36,14 @@ const AppStack = () => {
           cardStyle: { backgroundColor: colors.backgroundColor },
         }}
       />
-      <Stack.Screen name="News_Details" component={News_Details_Screen} />
+      <Stack.Screen
+        name="News_Details"
+        component={News_Details_Screen}
+        options={{
+          headerShown: false,
+          cardStyle: { backgroundColor: colors.backgroundColor },
+        }}
+      />
     </Stack.Navigator>
   );
 };

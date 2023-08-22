@@ -97,8 +97,8 @@ const FilterSheet = (props: SheetProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 24,
+    // flex: 1,
+    // padding: 24,
     backgroundColor: "grey",
   },
   contentContainer: {
