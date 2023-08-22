@@ -12,8 +12,10 @@ const News_List = ({ styles }: newsListProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const { loading, data } = useSelector(({ news }) => news);
   useEffect(() => {
+   if (data?.length<1) {
     dispatch(getNews());
-  }, []);
+   }
+  }, [data]);
   return (
     <>
       <View

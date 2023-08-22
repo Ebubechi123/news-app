@@ -2,9 +2,17 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import img from "../../../assets/images/latest_news.jpg";
 import { colors } from "../../../theme/colors";
 import { useState } from "react";
-const Notification_Card = () => {
+import { formatDate } from "../../../utilities/formatDate";
+interface newsProp {
+  author: string;
+  publishedAt: string;
+  urlToImage: string;
+  title: string;
+  content: string;
+}
+const Notification_Card = (props: newsProp) => {
   const [expanded, setExpanded] = useState(false);
-
+  const { author, publishedAt, urlToImage, title, content } = props;
   const toggleDescription = () => {
     setExpanded(!expanded);
   };
@@ -13,16 +21,13 @@ const Notification_Card = () => {
     <>
       <View style={styles.card}>
         <View style={styles.image_view}>
-          <Image style={styles.image} source={img} />
+          <Image style={styles.image} source={{ uri: urlToImage }} />
         </View>
         <View style={styles.date_view}>
-          <Text style={styles.date}>Monday, 10 May 2021</Text>
+          <Text style={styles.date}>{formatDate(publishedAt)}</Text>
         </View>
         <View style={styles.title_container}>
-          <Text style={styles.title}>
-            WHO classifies triple-mutant Covid variant from India as global
-            health risk
-          </Text>
+          <Text style={styles.title}>{title}</Text>
         </View>
         <View style={styles.description_view}>
           <Text
@@ -30,16 +35,14 @@ const Notification_Card = () => {
             lineBreakMode="tail"
             numberOfLines={expanded ? null : 2}
           >
-            A World Health Organization official said Monday it is reclassifying
-            the highly contagious triple-mutant Covid variant spreading in India
-            as a “variant of concern,” indicating that it’s become a...{" "}
+            {content}
           </Text>
           <Text onPress={toggleDescription} style={styles.readMoreLink}>
             {expanded ? "Read less" : "Read more"}
           </Text>
         </View>
         <View style={styles.author_container}>
-          <Text style={styles.author}>Published by Berkeley Lovelace Jr.</Text>
+          <Text style={styles.author}>Published by {author}</Text>
         </View>
       </View>
     </>
@@ -51,6 +54,7 @@ export default Notification_Card;
 const styles = StyleSheet.create({
   card: {
     width: "100%",
+    marginBottom: 40,
   },
   image_view: {
     width: "100%",

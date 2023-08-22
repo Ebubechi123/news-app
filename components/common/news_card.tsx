@@ -18,7 +18,6 @@ interface newsProp {
 const News_Card = (props: newsProp) => {
   const navigate = useNavigation().navigate;
   const { author, title, urlToImage,publishedAt } = props;
-  console.log("date",publishedAt)
   return (
     <>
       <TouchableOpacity

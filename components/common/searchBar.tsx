@@ -10,6 +10,7 @@ import { Feather } from "@expo/vector-icons";
 import { colors } from "../../theme/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 
 interface searchBarProps {
   notification: boolean;
@@ -17,6 +18,7 @@ interface searchBarProps {
 
 const SearchBar = (props: searchBarProps) => {
   const navigate = useNavigation().navigate;
+  const [input, setInput] = useState("");
   return (
     <>
       <View style={styles.search_bar_container}>
@@ -27,6 +29,10 @@ const SearchBar = (props: searchBarProps) => {
           ]}
         >
           <TextInput
+            value={input}
+            onChangeText={(e) => {
+              setInput(e);
+            }}
             style={styles.search_input}
             placeholder="DodgeCoin to the Moon.."
             placeholderTextColor={colors.grey}
@@ -34,10 +40,14 @@ const SearchBar = (props: searchBarProps) => {
           <View style={styles.icon}>
             <TouchableOpacity
               onPress={() => {
-                navigate("Search");
+                input !== "" ? setInput("") : navigate("Search");
               }}
             >
-              <Feather name="search" color={colors.grey} size={20} />
+              {input !== "" ? (
+                <Feather name="x" color={colors.grey} size={20} />
+              ) : (
+                <Feather name="search" color={colors.grey} size={20} />
+              )}
             </TouchableOpacity>
           </View>
         </View>

@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
   see_all: {
     color: colors.secondary_color,
     fontSize: 14,
-    fontWeight: "600",
-    fontFamily: "Nunito",
+    fontWeight: "400",
   },
 });

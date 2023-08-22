@@ -27,7 +27,7 @@ const list = [
 ];
 
 const FilterSheet = (props: SheetProps) => {
-  const snapPoints = useMemo(() => ["48%"], []);
+  const snapPoints = useMemo(() => ["58%"], []);
   const sheetHandler = () => {
     props.bottomSheetRef.current.close();
   };

@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 const News = () => {
   return (
     <>
-      <View style={styles.container} >
-        <Text style={styles.news} >
+      <ScrollView style={styles.container}>
+        <Text style={styles.news}>
           LONDON — Cryptocurrencies “have no intrinsic value” and people who
           invest in them should be prepared to lose all their money, Bank of
           England Governor Andrew Bailey said. Digital currencies like bitcoin,
@@ -26,33 +26,33 @@ const News = () => {
           2017, he warned: “If you want to invest in bitcoin, be prepared to
           lose all your money.”
         </Text>
-      </View>
+      </ScrollView>
     </>
   );
 };
 
 export default News;
 
-
 const styles = StyleSheet.create({
-    container:{
-        width:"100%",
-        paddingHorizontal:18,
-        paddingTop:80,
-        backgroundColor:"white",
-        borderTopLeftRadius:30,
-        borderTopRightRadius:30,
-        flex:1,
-        height:"100%",
-        position:"relative",
-        top:-40
-    },
-    news:{
-      fontSize:14,
-      color:"#2E0505",
-      textAlign:"justify",
-      lineHeight:21,
-      fontWeight:"600",
-      // fontFamily:"Nunito"
-    }
-})
+  container: {
+    width: "100%",
+    paddingHorizontal: 18,
+    paddingTop: 80,
+    backgroundColor: "white",
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    flex: 1,
+    height: "100%",
+    position: "relative",
+    top: -40,
+  },
+  news: {
+    fontSize: 14,
+    color: "#2E0505",
+    textAlign: "justify",
+    lineHeight: 21,
+    fontWeight: "600",
+    marginBottom: 130,
+    // fontFamily:"Nunito"
+  },
+});

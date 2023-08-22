@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   title: {
-    // fontFamily: "Nunito",
+    fontFamily: "Nunito",
     color: "white",
     lineHeight: 20.8,
     fontSize: 16,
@@ -98,7 +98,6 @@ const styles = StyleSheet.create({
     bottom: 20,
   },
   details: {
-    // fontFamily: "Nunito",
     fontWeight: "400",
     color: "white",
     fontSize: 11,

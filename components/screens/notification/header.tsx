@@ -1,13 +1,17 @@
 import { SimpleLineIcons } from "@expo/vector-icons";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { colors } from "../../../theme/colors";
+import { useNavigation } from "@react-navigation/native";
 
 const Notification_Header = () => {
+  const goBack = useNavigation().goBack;
   return (
     <>
       <View style={styles.header} >
         <View style={styles.icon_view} >
-          <SimpleLineIcons color={"#173418"} size={16} name="arrow-left" />
+        <TouchableOpacity onPress={()=>{goBack()}} >
+        <SimpleLineIcons  color={"#173418"} size={16} name="arrow-left" />
+        </TouchableOpacity>
         </View>
         <View style={styles.title_view} >
           <Text style={styles.title} >Hot Updates</Text>

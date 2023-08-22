@@ -15,7 +15,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
-    Nunito: require("./assets/fonts/Nunito/static/Nunito-Black.ttf"),
+    Nunito: require("./assets/fonts/Nunito/static/Nunito-Light.ttf"),
   });
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded || fontError) {
