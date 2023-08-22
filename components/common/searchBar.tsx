@@ -44,7 +44,11 @@ const SearchBar = (props: searchBarProps) => {
 
         {props.notification && (
           <View style={styles.icon}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigate("Notification");
+              }}
+            >
               <LinearGradient
                 colors={["#FF3A44", "#FF8086"]}
                 style={styles.notification_container}

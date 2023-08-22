@@ -4,8 +4,7 @@ import Home_Screen from "../screens/home";
 import Notification_Screen from "../screens/notifications";
 import Search_Screen from "../screens/search";
 import News_Details_Screen from "../screens/news_details";
-import SearchBar from "../components/common/searchBar";
-import { Text, View } from "react-native";
+import Notification_Header from "../components/screens/notification/header";
 import { colors } from "../theme/colors";
 
 type AppStackParamList = {
@@ -27,7 +26,22 @@ const AppStack = () => {
           cardStyle: { backgroundColor: colors.backgroundColor },
         }}
       />
-      <Stack.Screen name="Notification" component={Notification_Screen} />
+      <Stack.Screen
+        name="Notification"
+        component={Notification_Screen}
+        options={{
+          // header:()=>(<Notification_Header/>),
+          headerShown:false,
+          // header: () => {
+          //   return (
+          //     <>
+          //       <Notification_Header />
+          //     </>
+          //   );
+          // },
+          cardStyle: { backgroundColor: colors.backgroundColor },
+        }}
+      />
       <Stack.Screen
         name="Search"
         component={Search_Screen}
