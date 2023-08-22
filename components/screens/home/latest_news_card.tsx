@@ -7,45 +7,44 @@ import {
   View,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import image from "../../../assets/images/latest_news.jpg";
-import { colors } from "../../../theme/colors";
 interface NewsItem {
   id: number;
   title: string;
+  author: string;
   description: string;
+  urlToImage: string;
 }
 
 interface CardProps {
   cardWidth: number;
-  newsData: NewsItem[];
+  newsData: NewsItem;
 }
 const Latest_News_Card = (props: CardProps) => {
+  const { title, author, description, urlToImage } = props.newsData;
   return (
     <TouchableOpacity
       style={{
         width: props.cardWidth,
-        left:-10,
-        position:"relative"
+        left: -10,
+        position: "relative",
       }}
     >
-      <ImageBackground source={image} style={styles.card}>
+      <ImageBackground source={{ uri: urlToImage }} style={styles.card}>
         <LinearGradient
           colors={["#62626259", "#000000"]}
           style={styles.gradient}
         />
-        <View style={styles.author_container}>
-          <Text style={styles.author}>by Ryan Brown</Text>
-        </View>
+        {author && (
+          <View style={styles.author_container}>
+            <Text style={styles.author}>by {author}</Text>
+          </View>
+        )}
         <View style={styles.title_container}>
-          <Text style={styles.title}>
-            Crypto investors should be prepared to lose all their money, BOE
-            governor says
-          </Text>
+          <Text style={styles.title}>{title}</Text>
         </View>
         <View style={styles.details_container}>
-          <Text style={styles.details}>
-            “I’m going to say this very bluntly again,” he added. “Buy them only
-            if you’re prepared to lose all your money.”
+          <Text style={styles.details} lineBreakMode="tail" numberOfLines={3}>
+            “{description}”
           </Text>
         </View>
       </ImageBackground>
@@ -77,7 +76,7 @@ const styles = StyleSheet.create({
     color: "white",
     textAlign: "left",
     // fontFamily: "Nunito",
-    fontSize: 14,
+    fontSize: 11,
     fontWeight: "800",
   },
   title_container: {
@@ -89,6 +88,7 @@ const styles = StyleSheet.create({
     // fontFamily: "Nunito",
     color: "white",
     lineHeight: 20.8,
+    fontSize: 16,
     fontWeight: "700",
   },
   details_container: {
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     // fontFamily: "Nunito",
     fontWeight: "400",
     color: "white",
-    fontSize: 12,
+    fontSize: 11,
     lineHeight: 13.64,
   },
 });

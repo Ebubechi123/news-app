@@ -5,15 +5,18 @@ import * as SplashScreen from "expo-splash-screen";
 import { NavigationContainer } from "@react-navigation/native";
 import AppStack from "./navigation/stackNavigator";
 import 'react-native-gesture-handler'
-const platform = Platform.OS;
+import {Provider} from "react-redux"
+import {store} from "./state/store"
 const screenWidth = Dimensions.get("window").width;
 SplashScreen.preventAutoHideAsync();
+
+
+
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
     Nunito: require("./assets/fonts/Nunito/static/Nunito-Black.ttf"),
   });
-
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded || fontError) {
       await SplashScreen.hideAsync();
@@ -25,11 +28,13 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+   <Provider store={store} >
+     <NavigationContainer>
       <View style={styles.container} onLayout={onLayoutRootView}>
         <AppStack />
       </View>
     </NavigationContainer>
+   </Provider>
   );
 }
 

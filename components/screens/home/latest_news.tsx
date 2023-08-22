@@ -2,8 +2,18 @@ import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { colors } from "../../../theme/colors";
 import Latest_News_Carousel from "./latest_news_carousel";
+import LatestNewsLoader from "./latest_news_card_loader";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { AppDispatch } from "../../../state/store";
+import { getLatestNews } from "../../../state/slices/get_latest_news";
 
 const Latest_News = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const loading = useSelector(({ latest_news }) => latest_news?.loading);
+  useEffect(() => {
+    dispatch(getLatestNews());
+  }, []);
   return (
     <>
       <View style={styles.container}>
@@ -30,15 +40,10 @@ const Latest_News = () => {
             </TouchableOpacity>
           </View>
         </View>
-      
 
-
-      <View style={{width:"100%",marginTop:20}} > 
-        {/* <Latest_News_Card/> */}
-        <Latest_News_Carousel/>
-      </View>
-
-
+        <View style={{ width: "100%", marginTop: 20 }}>
+          {loading ? <LatestNewsLoader /> : <Latest_News_Carousel />}
+        </View>
       </View>
     </>
   );
@@ -57,7 +62,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal:18
+    paddingHorizontal: 18,
   },
   title_container: {
     width: "50%",
